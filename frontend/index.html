@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HomeHub · Nhà thông minh</title>
+  <link rel="stylesheet" href="/style.css"><script defer src="/vendor/mqtt.js"></script><script type="module" src="/app.js"></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="#tong-quan"><span class="brand-mark">⌂</span><span>home<span class="brand-light">hub</span><small>SMART LIVING</small></span></a>
+    <p class="nav-label">KHÔNG GIAN CỦA BẠN</p>
+    <nav aria-label="Điều hướng chính"><a class="nav-active" href="#tong-quan"><span>▦</span> Tổng quan</a><a href="#cam-bien"><span>◉</span> Cảm biến</a><a href="#thiet-bi"><span>▤</span> Thiết bị</a><a href="#an-ninh"><span>◇</span> An ninh</a><a href="#hoat-dong"><span>◷</span> Hoạt động</a></nav>
+    <div class="sidebar-bottom"><div class="hub-icon">⌁</div><div><strong>ESP32 DevKit</strong><small>Trung tâm điều khiển</small></div><span class="side-dot"></span></div>
+  </aside>
+  <main id="tong-quan">
+    <header class="topbar"><div class="breadcrumb">NHÀ CỦA TÔI <span>/</span> TỔNG QUAN</div><div class="top-right"><span class="date" id="today"></span><span class="avatar">H</span></div></header>
+    <div class="content">
+      <div class="welcome"><div><p class="eyebrow">BẢNG ĐIỀU KHIỂN <span>✳</span></p><h1>Xin chào, chủ nhà <span>✳</span></h1><p>Theo dõi và điều khiển ngôi nhà của bạn tại một nơi.</p></div><div class="connection"><span id="broker">Đang kết nối broker</span><span id="device">Đang chờ ESP32</span></div></div>
+      <section class="hero"><div><div class="hero-tag"><span class="pulse"></span> NGÔI NHÀ THÔNG MINH</div><h2>Mọi thứ trong nhà,<br><em>trong tầm tay.</em></h2><p>Một không gian tiện nghi hơn, an tâm hơn mỗi ngày.</p><a href="#thiet-bi">Khám phá thiết bị <span>↗</span></a></div><div class="hero-art" aria-hidden="true"><div class="sun"></div><div class="house-roof"></div><div class="house"><div class="house-window"><i></i><i></i></div><div class="house-door"></div></div><div class="plant">✳</div><div class="art-caption">A LITTLE SMARTER<br>EVERY DAY <span>↗</span></div></div></section>
+      <section id="cam-bien" class="section"><div class="section-heading"><div><p class="eyebrow">THEO DÕI THỜI GIAN THỰC</p><h2>Môi trường trong nhà</h2></div><span class="section-note"><span class="live-dot"></span> Cập nhật trực tiếp</span></div>
+        <div class="sensor-grid">
+          <article class="sensor-card"><div class="card-top"><span class="icon peach">☼</span><span class="card-index">01 / NHIỆT ĐỘ</span></div><p class="reading"><span id="temperature">—</span><small> °C</small></p><p class="card-caption">Nhiệt độ hiện tại</p><div class="card-bottom">Cảm biến DHT22 <span>↗</span></div></article>
+          <article class="sensor-card"><div class="card-top"><span class="icon blue">♧</span><span class="card-index">02 / ĐỘ ẨM</span></div><p class="reading"><span id="humidity">—</span><small> %</small></p><p class="card-caption">Độ ẩm không khí</p><div class="card-bottom">Cảm biến DHT22 <span>↗</span></div></article>
+          <article class="sensor-card"><div class="card-top"><span class="icon yellow">✺</span><span class="card-index">03 / ÁNH SÁNG</span></div><p class="reading"><span id="light">—</span><small> ADC</small></p><p class="card-caption">Cường độ ánh sáng</p><div class="card-bottom">Cảm biến LDR <span>↗</span></div></article>
+          <article class="sensor-card"><div class="card-top"><span class="icon lilac">◎</span><span class="card-index">04 / CHUYỂN ĐỘNG</span></div><p class="reading reading-text" id="motion">—</p><p class="card-caption">Trạng thái khu vực</p><div class="card-bottom">Cảm biến PIR <span>↗</span></div></article>
+        </div>
+      </section>
+      <section id="thiet-bi" class="section"><div class="section-heading"><div><p class="eyebrow">ĐIỀU KHIỂN TỪ XA</p><h2>Thiết bị của bạn</h2></div><span class="section-note">03 thiết bị kết nối</span></div>
+        <div class="device-grid">
+          <article class="device-card"><div class="device-head"><span class="icon yellow">✺</span><span class="device-number">THIẾT BỊ 01</span></div><h3>Đèn thông minh</h3><p class="device-description">Chiếu sáng theo cách của bạn</p><p class="state" id="lamp">—</p><div class="buttons" role="group" aria-label="Chế độ đèn"><button data-device="lamp" data-value="AUTO" disabled>Tự động</button><button data-device="lamp" data-value="ON" disabled>Bật</button><button data-device="lamp" data-value="OFF" disabled>Tắt</button></div><p class="device-hint">Tự động bật khi ánh sáng yếu</p></article>
+          <article class="device-card"><div class="device-head"><span class="icon blue">✳</span><span class="device-number">THIẾT BỊ 02</span></div><h3>Quạt thông minh</h3><p class="device-description">Giữ không gian luôn dễ chịu</p><p class="state" id="fan">—</p><div class="buttons" role="group" aria-label="Chế độ quạt"><button data-device="fan" data-value="AUTO" disabled>Tự động</button><button data-device="fan" data-value="ON" disabled>Bật</button><button data-device="fan" data-value="OFF" disabled>Tắt</button></div><p class="device-hint">Tự động bật từ 30 °C</p></article>
+          <article class="device-card"><div class="device-head"><span class="icon peach">▣</span><span class="device-number">THIẾT BỊ 03</span></div><h3>Cửa ra vào</h3><p class="device-description">Kiểm soát lối vào ngôi nhà</p><p class="state" id="door">—</p><div class="buttons" role="group" aria-label="Điều khiển cửa"><button data-device="door" data-value="OPEN" disabled>Mở cửa</button><button data-device="door" data-value="CLOSE" disabled>Đóng cửa</button></div><p class="device-hint">Tự đóng sau khoảng 5 giây</p></article>
+        </div>
+      </section>
+      <section class="bottom-grid"><article id="an-ninh" class="security"><div class="security-header"><div><p class="eyebrow">BÌNH YÊN TỪNG KHOẢNH KHẮC</p><h2>An ninh ngôi nhà</h2></div><span class="icon lilac">◇</span></div><p class="security-copy">Theo dõi chuyển động và cảnh báo ngay trên bảng điều khiển.</p><div class="security-row"><span>Giám sát</span><strong id="armed">—</strong></div><div class="security-row"><span>Cảnh báo</span><strong id="alarm">Còi —</strong></div><p class="device-hint">Bật hoặc tắt giám sát bằng công tắc trên mô hình.</p></article><article id="hoat-dong" class="activity"><div class="security-header"><div><p class="eyebrow">NHẬT KÝ PHIÊN NÀY</p><h2>Hoạt động gần đây</h2></div><span class="icon mint">◷</span></div><div id="activity-list" class="activity-list"><p class="empty">Các thay đổi trạng thái sẽ xuất hiện ở đây.</p></div></article></section>
+      <footer><span id="last-seen">Chưa nhận dữ liệu</span><span id="feedback" role="status"></span><span>ĐƯỢC THIẾT KẾ CHO CUỘC SỐNG TỐT HƠN ✳</span></footer>
+    </div>
+  </main>
+</body></html>
